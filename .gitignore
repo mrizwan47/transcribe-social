@@ -1,0 +1,28 @@
+# Audio files
+*.mp3
+*.wav
+*.m4a
+*.ogg
+*.flac
+
+# Local scripts
+*.sh
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

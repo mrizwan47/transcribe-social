@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ---------- config ----------
+WHISPER_BIN="whisper"
+MODEL="base"
+LANG="en"
+# ----------------------------
+
+transcribe_url() {
+  local URL="$1"
+  local WHISPER_ARGS="--model $MODEL --language $LANG"
+  
+  # Use a temporary working directory so nothing is saved persistently
+  local WORKDIR
+  WORKDIR="$(mktemp -d)"
+  trap 'rm -rf "$WORKDIR"' RETURN
+  
+  local AUDIO_FILE="$WORKDIR/audio.mp3"
+  
+  echo "Downloading..." >&2
+  
+  # Download audio only, as MP3, into the temp directory
+  if ! yt-dlp \
+    --quiet \
+    --no-warnings \
+    --extract-audio \
+    --audio-format mp3 \
+    --audio-quality 0 \
+    -o "$AUDIO_FILE" \
+    "$URL" 2>/dev/null; then
+    echo "Error: Failed to download audio." >&2
+    return 1
+  fi
+  
+  echo "Transcribing..." >&2
+  
+  # Run Whisper, writing its usual transcript files into the temp dir
+  "$WHISPER_BIN" "$AUDIO_FILE" $WHISPER_ARGS --output_dir "$WORKDIR" >/dev/null 2>&1
+  
+  # Grab the first .txt transcript Whisper produced
+  local TRANSCRIPT_FILE
+  TRANSCRIPT_FILE="$(ls "$WORKDIR"/*.txt 2>/dev/null | head -n 1 || true)"
+  
+  if [ -z "$TRANSCRIPT_FILE" ]; then
+    echo "Error: No transcript produced." >&2
+    return 1
+  fi
+  
+  echo "" >&2
+  # Print the transcript text
+  sed 's/^\[[0-9:. >\-]*\] //g' "$TRANSCRIPT_FILE"
+  echo "" >&2
+  
+  rm -rf "$WORKDIR"
+}
+
+show_status() {
+  echo "  Model: $MODEL | Language: $LANG"
+}
+
+show_help() {
+  echo "Commands:"
+  echo "  /model <name>   - Set model (tiny, base, small, medium, large, turbo)"
+  echo "  /lang <code>    - Set language (en, ur, es, fr, de, zh, ar, hi, etc.)"
+  echo "  /status         - Show current settings"
+  echo "  /help           - Show this help"
+  echo "  exit            - Quit"
+  echo ""
+  echo "Or just paste a URL to transcribe."
+}
+
+# Interactive mode
+echo "🎙️  Reel Transcriber"
+show_status
+echo ""
+echo "Type /help for commands, or paste a URL to transcribe."
+echo "Author: Rizwan (riz.codes)"
+echo ""
+
+while true; do
+  printf "URL> "
+  read -r INPUT
+  
+  # Handle empty input
+  if [[ -z "$INPUT" ]]; then
+    continue
+  fi
+  
+  # Handle commands
+  if [[ "$INPUT" == "/help" ]]; then
+    show_help
+    continue
+  fi
+  
+  if [[ "$INPUT" == "/status" ]]; then
+    show_status
+    continue
+  fi
+  
+  if [[ "$INPUT" =~ ^/model[[:space:]]+(.+)$ ]]; then
+    MODEL="${BASH_REMATCH[1]}"
+    echo "Model set to: $MODEL"
+    continue
+  fi
+  
+  if [[ "$INPUT" =~ ^/lang[[:space:]]+(.+)$ ]]; then
+    LANG="${BASH_REMATCH[1]}"
+    echo "Language set to: $LANG"
+    continue
+  fi
+  
+  if [[ "$INPUT" == "exit" || "$INPUT" == "quit" || "$INPUT" == "q" ]]; then
+    echo "Bye!"
+    break
+  fi
+  
+  # Treat as URL
+  transcribe_url "$INPUT"
+done
