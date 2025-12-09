@@ -4,17 +4,17 @@ Transcribe Instagram/TikTok reels and YouTube shorts using OpenAI Whisper.
 
 ### Prerequisites
 
-You need `ffmpeg` installed on your system:
+You need `ffmpeg` and `cmake` installed on your system:
 
 ```bash
 # macOS
-brew install ffmpeg
+brew install ffmpeg cmake
 
 # Ubuntu/Debian
-sudo apt install ffmpeg
+sudo apt install ffmpeg cmake
 
 # Windows (with chocolatey)
-choco install ffmpeg
+choco install ffmpeg cmake
 ```
 
 ## Installation
@@ -22,7 +22,7 @@ choco install ffmpeg
 ```bash
 git clone https://github.com/mrizwan47/transcribe-reel.git
 cd transcribe-reel
-pip install .
+pip3 install .
 ```
 
 This will install:
