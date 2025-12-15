@@ -1,6 +1,14 @@
 # Transcribe Reel
 
-Transcribe Instagram/TikTok reels and YouTube shorts using OpenAI Whisper.
+Transcribe social media videos using OpenAI Whisper.
+
+**Tested and working with:**
+- YouTube (both shorts and regular videos)
+- Instagram Reels
+- TikTok videos
+- X/Twitter videos
+- Facebook videos
+- Reddit videos
 
 ### Prerequisites
 
@@ -38,7 +46,7 @@ Run the command:
 transcribe-reel
 ```
 
-Then paste any reel/short URL when prompted.
+Then paste any supported video URL when prompted.
 
 ### Commands
 
