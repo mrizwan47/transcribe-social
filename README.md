@@ -4,89 +4,85 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OpenAI Whisper](https://img.shields.io/badge/Powered%20by-OpenAI%20Whisper-412991.svg)](https://github.com/openai/whisper)
 
-> Turn any social media video into text in seconds. Powered by OpenAI Whisper.
+> CLI tool to transcribe social media videos using OpenAI Whisper.
 
-Stop wasting time manually transcribing videos. Whether you're repurposing content, analyzing competitors, or extracting insights—Transcribe Reel handles it instantly.
-
-## ✨ Why Use This?
-
-**Perfect for:**
-- 📝 Content creators repurposing videos into blogs/threads
-- 📊 Marketers analyzing competitor video content
-- 🎓 Students transcribing lectures and tutorials
-- 🔍 Researchers extracting insights from social media
-
-**Works with:**
+**Supported Platforms:**
 YouTube • Instagram • TikTok • Twitter/X • Facebook • Reddit
 
-## 🚀 Features
+**Use Cases:**
+- Transcribe videos for content repurposing
+- Extract text from competitor content
+- Create transcripts for accessibility
+- Analyze video content at scale
 
-- **One Command** - Paste URL, get transcript
-- **6 Platforms** - Works with all major social media sites
-- **Multi-language** - 50+ languages supported
-- **Smart Models** - Choose speed vs accuracy (tiny to turbo)
-- **No Clutter** - Clean CLI, no files saved unless you want them
-- **Privacy First** - Everything runs locally on your machine
+## Features
 
-## 📦 Quick Start
+- Simple CLI interface - paste URL, get transcript
+- Supports 6 major social media platforms
+- Multi-language support (50+ languages)
+- Multiple Whisper models (tiny to turbo)
+- Temporary file handling - no clutter
+- Runs locally - no data sent to external services
+
+## Installation
 
 **Requirements:** Python 3.11+ and FFmpeg
 
-```bash
-# Install FFmpeg (one-time setup)
-brew install ffmpeg  # macOS
-# sudo apt install ffmpeg  # Ubuntu/Debian
+### 1. Install FFmpeg
 
-# Install Transcribe Reel
+```bash
+# macOS
+brew install ffmpeg
+
+# Ubuntu/Debian
+sudo apt install ffmpeg
+
+# Windows (using Chocolatey)
+choco install ffmpeg
+
+# Windows (using Scoop)
+scoop install ffmpeg
+```
+
+### 2. Install Transcribe Reel
+
+```bash
 git clone https://github.com/mrizwan47/transcribe-reel.git
 cd transcribe-reel
 python3 -m pip install .
-
-# Start transcribing!
-transcribe-reel
 ```
 
-## 💡 How It Works
+### 3. Run
 
-**1. Start the CLI**
 ```bash
 transcribe-reel
 ```
 
-**2. Paste any video URL**
-```
-URL> https://www.youtube.com/shorts/xyz123
-```
+## Usage
 
-**3. Get your transcript**
-```
+Start the CLI and paste any video URL:
+
+```bash
+$ transcribe-reel
+
+🎙️  Reel Transcriber v2
+Author: Rizwan (riz.codes)
+
+Loading Whisper model 'base'...
+✓ Model 'base' loaded successfully
+
+  Model: base | Language: en
+
+Type /help for commands, or paste a URL to transcribe.
+
+URL> https://www.youtube.com/shorts/xyz123
 Downloading audio...
 Transcribing...
 
-In this video, I'll show you three productivity hacks that 
-changed my life. First, time blocking...
+In this video, I'll show you three productivity hacks...
 ```
 
-**That's it.** No accounts, no uploads, no waiting.
-
-## 🎯 Real-World Use Cases
-
-```bash
-# Repurpose a viral YouTube Short into a Twitter thread
-URL> https://youtube.com/shorts/xyz
-
-# Extract quotes from competitor's Instagram Reel
-URL> https://instagram.com/reel/abc
-
-# Transcribe a TikTok tutorial in Spanish
-/lang es
-URL> https://tiktok.com/@user/video/123
-
-# Analyze a trending Reddit video discussion
-URL> https://reddit.com/r/videos/comments/xyz
-```
-
-### ⚙️ Commands
+### Commands
 
 | Command | Description |
 |---------|-------------|
@@ -96,7 +92,7 @@ URL> https://reddit.com/r/videos/comments/xyz
 | `/help` | Show help |
 | `exit` | Quit |
 
-## 🔧 Need Help?
+## Troubleshooting
 
 <details>
 <summary><strong>Python version error?</strong></summary>
@@ -119,8 +115,10 @@ python3 -m pip install -U yt-dlp
 <summary><strong>FFmpeg not found?</strong></summary>
 
 ```bash
-brew install ffmpeg  # macOS
-sudo apt install ffmpeg  # Ubuntu/Debian
+brew install ffmpeg        # macOS
+sudo apt install ffmpeg    # Ubuntu/Debian
+choco install ffmpeg       # Windows (Chocolatey)
+scoop install ffmpeg       # Windows (Scoop)
 ```
 </details>
 
@@ -139,12 +137,10 @@ Cached in `~/.cache/whisper/`
 
 ---
 
-## 📝 License
+## License
 
 MIT License - See [LICENSE](LICENSE)
 
-## 👨‍💻 Author
+## Author
 
-Built by [Rizwan](https://riz.codes/)
-
-**Found this useful?** Star the repo ⭐
+[Rizwan](https://riz.codes/)
