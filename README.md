@@ -1,61 +1,150 @@
-# Transcribe Reel
+# 🎙️ Transcribe Reel
 
-Transcribe social media videos using OpenAI Whisper.
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![OpenAI Whisper](https://img.shields.io/badge/Powered%20by-OpenAI%20Whisper-412991.svg)](https://github.com/openai/whisper)
 
-**Tested and working with:**
-- YouTube (both shorts and regular videos)
-- Instagram Reels
-- TikTok videos
-- X/Twitter videos
-- Facebook videos
-- Reddit videos
+> Turn any social media video into text in seconds. Powered by OpenAI Whisper.
 
-### Prerequisites
+Stop wasting time manually transcribing videos. Whether you're repurposing content, analyzing competitors, or extracting insights—Transcribe Reel handles it instantly.
 
-You need `ffmpeg` and `cmake` installed on your system:
+## ✨ Why Use This?
+
+**Perfect for:**
+- 📝 Content creators repurposing videos into blogs/threads
+- 📊 Marketers analyzing competitor video content
+- 🎓 Students transcribing lectures and tutorials
+- 🔍 Researchers extracting insights from social media
+
+**Works with:**
+YouTube • Instagram • TikTok • Twitter/X • Facebook • Reddit
+
+## 🚀 Features
+
+- **One Command** - Paste URL, get transcript
+- **6 Platforms** - Works with all major social media sites
+- **Multi-language** - 50+ languages supported
+- **Smart Models** - Choose speed vs accuracy (tiny to turbo)
+- **No Clutter** - Clean CLI, no files saved unless you want them
+- **Privacy First** - Everything runs locally on your machine
+
+## 📦 Quick Start
+
+**Requirements:** Python 3.11+ and FFmpeg
 
 ```bash
-# macOS
-brew install ffmpeg cmake
+# Install FFmpeg (one-time setup)
+brew install ffmpeg  # macOS
+# sudo apt install ffmpeg  # Ubuntu/Debian
 
-# Ubuntu/Debian
-sudo apt install ffmpeg cmake
-
-# Windows (with chocolatey)
-choco install ffmpeg cmake
-```
-
-## Installation
-
-```bash
+# Install Transcribe Reel
 git clone https://github.com/mrizwan47/transcribe-reel.git
 cd transcribe-reel
-pip3 install .
+python3 -m pip install .
+
+# Start transcribing!
+transcribe-reel
 ```
 
-This will install:
-- `yt-dlp` - for downloading audio from URLs
-- `openai-whisper` - for transcription
-- `transcribe-reel` command
+## 💡 How It Works
 
-## Usage
-
-Run the command:
-
+**1. Start the CLI**
 ```bash
 transcribe-reel
 ```
 
-Then paste any supported video URL when prompted.
+**2. Paste any video URL**
+```
+URL> https://www.youtube.com/shorts/xyz123
+```
 
-### Commands
+**3. Get your transcript**
+```
+Downloading audio...
+Transcribing...
 
-- `/model <name>` - Set model (tiny, base, small, medium, large, turbo)
-- `/lang <code>` - Set language (en, ur, es, fr, de, zh, ar, hi, etc.)
-- `/status` - Show current settings
-- `/help` - Show help
-- `exit` - Quit
+In this video, I'll show you three productivity hacks that 
+changed my life. First, time blocking...
+```
 
-## Author
+**That's it.** No accounts, no uploads, no waiting.
 
-[Rizwan](https://riz.codes/)
+## 🎯 Real-World Use Cases
+
+```bash
+# Repurpose a viral YouTube Short into a Twitter thread
+URL> https://youtube.com/shorts/xyz
+
+# Extract quotes from competitor's Instagram Reel
+URL> https://instagram.com/reel/abc
+
+# Transcribe a TikTok tutorial in Spanish
+/lang es
+URL> https://tiktok.com/@user/video/123
+
+# Analyze a trending Reddit video discussion
+URL> https://reddit.com/r/videos/comments/xyz
+```
+
+### ⚙️ Commands
+
+| Command | Description |
+|---------|-------------|
+| `/model tiny\|base\|small\|medium\|large\|turbo` | Switch AI model (tiny=fastest, large=most accurate) |
+| `/lang <code>` | Change language (en, es, fr, de, zh, ar, hi, ur, etc.) |
+| `/status` | Show current settings |
+| `/help` | Show help |
+| `exit` | Quit |
+
+## 🔧 Need Help?
+
+<details>
+<summary><strong>Python version error?</strong></summary>
+
+```bash
+python3 --version  # Must be 3.11+
+brew install python@3.11  # macOS
+```
+</details>
+
+<details>
+<summary><strong>YouTube 403 Forbidden error?</strong></summary>
+
+```bash
+python3 -m pip install -U yt-dlp
+```
+</details>
+
+<details>
+<summary><strong>FFmpeg not found?</strong></summary>
+
+```bash
+brew install ffmpeg  # macOS
+sudo apt install ffmpeg  # Ubuntu/Debian
+```
+</details>
+
+<details>
+<summary><strong>How much disk space do models need?</strong></summary>
+
+Models download automatically on first use:
+- **tiny**: ~75MB (fastest, least accurate)
+- **base**: ~150MB (default, balanced)
+- **small**: ~500MB (good quality)
+- **medium/turbo**: ~1.5GB (great quality)
+- **large**: ~3GB (best quality)
+
+Cached in `~/.cache/whisper/`
+</details>
+
+---
+
+## 📝 License
+
+MIT License - See [LICENSE](LICENSE)
+
+## 👨‍💻 Author
+
+Built by [Rizwan](https://riz.codes/)
+
+**Found this useful?** Star the repo ⭐
