@@ -12,16 +12,6 @@ import warnings
 from pathlib import Path
 from urllib.parse import urlparse
 
-# Setup bundled FFmpeg path for PyInstaller executables
-if getattr(sys, 'frozen', False):
-    # Running as compiled executable
-    bundle_dir = sys._MEIPASS
-    ffmpeg_name = 'ffmpeg.exe' if sys.platform == 'win32' else 'ffmpeg'
-    ffmpeg_path = os.path.join(bundle_dir, ffmpeg_name)
-    if os.path.exists(ffmpeg_path):
-        # Add to PATH so yt-dlp can find it
-        os.environ['PATH'] = bundle_dir + os.pathsep + os.environ.get('PATH', '')
-
 # Suppress warnings
 warnings.filterwarnings("ignore", message="urllib3 v2 only supports OpenSSL 1.1.1+")
 warnings.filterwarnings("ignore", message="FP16 is not supported on CPU")

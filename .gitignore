@@ -48,10 +48,3 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
-
-# PyInstaller
-*.spec
-build/
-dist/
-*.exe
-*.app
