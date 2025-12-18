@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Transcribe Reel - CLI tool for transcribing social media videos
+Transcribe Social - CLI tool for transcribing social media videos
 """
 
 import os
@@ -24,7 +24,7 @@ except ImportError as e:
     sys.exit(1)
 
 
-class TranscribeReel:
+class TranscribeSocial:
     def __init__(self):
         self.model = None
         self.model_name = "base"
@@ -177,7 +177,7 @@ class TranscribeReel:
     
     def run(self):
         """Main interactive loop"""
-        print("🎙️  Reel Transcriber v2")
+        print("🎙️  Social Media Transcriber")
         print("Author: Rizwan (riz.codes)")
         print("")
         
@@ -248,7 +248,7 @@ class TranscribeReel:
 
 def main():
     """Entry point"""
-    transcriber = TranscribeReel()
+    transcriber = TranscribeSocial()
     transcriber.run()
 
 

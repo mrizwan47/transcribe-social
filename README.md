@@ -1,4 +1,4 @@
-# 🎙️ Transcribe Reel
+# 🎙️ Transcribe Social
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -44,18 +44,18 @@ choco install ffmpeg
 scoop install ffmpeg
 ```
 
-### 2. Install Transcribe Reel
+### 2. Install Transcribe Social
 
 ```bash
-git clone https://github.com/mrizwan47/transcribe-reel.git
-cd transcribe-reel
+git clone https://github.com/mrizwan47/transcribe-social.git
+cd transcribe-social
 python3 -m pip install .
 ```
 
 ### 3. Run
 
 ```bash
-transcribe-reel
+transcribe-social
 ```
 
 ## Usage
@@ -63,9 +63,9 @@ transcribe-reel
 Start the CLI and paste any video URL:
 
 ```bash
-$ transcribe-reel
+$ transcribe-social
 
-🎙️  Reel Transcriber v2
+🎙️  Social Media Transcriber
 Author: Rizwan (riz.codes)
 
 Loading Whisper model 'base'...
