@@ -12,8 +12,10 @@ import warnings
 from pathlib import Path
 from urllib.parse import urlparse
 
-# Suppress urllib3 OpenSSL warnings
+# Suppress warnings
 warnings.filterwarnings("ignore", message="urllib3 v2 only supports OpenSSL 1.1.1+")
+warnings.filterwarnings("ignore", message="FP16 is not supported on CPU")
+warnings.filterwarnings("ignore", category=UserWarning, module="whisper")
 
 try:
     import whisper

@@ -47,15 +47,20 @@ scoop install ffmpeg
 ### 2. Install Transcribe Social
 
 ```bash
-git clone https://github.com/mrizwan47/transcribe-social.git
-cd transcribe-social
-python3 -m pip install .
+pip install transcribe-social
 ```
 
 ### 3. Run
 
 ```bash
 transcribe-social
+```
+
+**Alternative - Install from source:**
+```bash
+git clone https://github.com/mrizwan47/transcribe-social.git
+cd transcribe-social
+pip install .
 ```
 
 ## Usage
